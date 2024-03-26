@@ -52,7 +52,7 @@
                                     <ul id="navigation">
                                         <li><a href="index.php">home</a></li>
                                         <li><a href="about.php">about</a></li>
-                                        <li><a href="Recipes_details.php">Recipes</a></li>
+                                        <li><a href="Recipes.php">Recipes</a></li>
                                         <li><a href="contact.php">Contact</a></li>
                                         <li><a href="login.php">Login</a></li>
                                         <li><a href="register.php">Register</a></li>
