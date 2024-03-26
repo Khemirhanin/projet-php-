@@ -40,7 +40,7 @@
                     <div class="row align-items-center">
                         <div class="col-xl-3 col-lg-2">
                             <div class="logo">
-                                <a href="index.html">
+                                <a href="index.php">
                                     <img src="img/logo.png" alt="">
                                 </a>
                             </div>
@@ -49,22 +49,10 @@
                             <div class="main-menu white_text  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a href="index.html">home</a></li>
-                                        <li><a href="about.html">about</a></li>
-                                        <li><a href="Recipes.html">Recipes</a></li>
-                                        <li><a href="#">blog <i class="ti-angle-down"></i></a>
-                                            <ul class="submenu">
-                                                <li><a href="blog.html">blog</a></li>
-                                                <li><a href="single-blog.html">single-blog</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">pages <i class="ti-angle-down"></i></a>
-                                            <ul class="submenu">
-                                                <li><a href="recipes_details.html">Recipes Details</a></li>
-                                                <li><a href="elements.html">elements</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="index.php">home</a></li>
+                                        <li><a href="about.php">about</a></li>
+                                        <li><a href="Recipes.php">Recipes</a></li>
+                                        <li><a href="contact.php">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -139,8 +127,12 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group mt-3">
+                <a href="review.php?recipe=idRecipe" class="button button-contactForm btn_4 boxed-btn">Write a Review</a>
+            </div>
         </div>
     </div>
+
     <!-- recepie_area_start  -->
     <div class="recepie_area inc_padding">
         <div class="container">
@@ -185,81 +177,6 @@
 
     <!-- footer  -->
     <footer class="footer">
-        <div class="footer_top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-2 col-md-6 col-lg-2">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                Top Products
-                            </h3>
-                            <ul>
-                                <li><a href="#">Managed Website</a></li>
-                                <li><a href="#"> Manage Reputation</a></li>
-                                <li><a href="#">Power Tools</a></li>
-                                <li><a href="#">Marketing Service</a></li>
-                            </ul>
-
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-md-6 col-lg-2">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                Quick Links
-                            </h3>
-                            <ul>
-                                <li><a href="#">Jobs</a></li>
-                                <li><a href="#">Brand Assets</a></li>
-                                <li><a href="#">Investor Relations</a></li>
-                                <li><a href="#">Terms of Service</a></li>
-                            </ul>
-
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-md-6 col-lg-2">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                Features
-                            </h3>
-                            <ul>
-                                <li><a href="#">Jobs</a></li>
-                                <li><a href="#">Brand Assets</a></li>
-                                <li><a href="#">Investor Relations</a></li>
-                                <li><a href="#">Terms of Service</a></li>
-                            </ul>
-
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-md-6 col-lg-2">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                Resources
-                            </h3>
-                            <ul>
-                                <li><a href="#">Guides</a></li>
-                                <li><a href="#">Research</a></li>
-                                <li><a href="#">Experts</a></li>
-                                <li><a href="#">Agencies</a></li>
-                            </ul>
-
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-lg-4">
-                            <div class="footer_widget">
-                                    <h3 class="footer_title">
-                                            Subscribe
-                                    </h3>
-                                    <p class="newsletter_text">You can trust us. we only send promo offers,</p>
-                                    <form action="#" class="newsletter_form">
-                                        <input type="text" placeholder="Enter your mail">
-                                        <button type="submit"> <i class="ti-arrow-right"></i> </button>
-                                    </form>
-                                    
-                                </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="copy-right_text">
             <div class="container">
                 <div class="footer_border"></div>
