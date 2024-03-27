@@ -11,7 +11,7 @@
 }
 .star.active,
 .star.active ~ .star {
-    color: #fdd835; /* Change to desired active color */
+    color: #fdd835; 
 }
 #reviewImg{
     border-radius: 50%;

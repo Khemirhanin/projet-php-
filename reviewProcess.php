@@ -1,6 +1,10 @@
 <?php
     require_once('components/autoload.php');
     
+    /*for debugging
+    session_start();
+    $_SESSION['user_id']=1;*/
+
     //if the user isn't logged in go to login page
     if(!isset($_SESSION['user_id'])) {
         header("Location: login.php");
@@ -22,7 +26,7 @@
         $repository->insertReview($title,$message,$rate,$user,$recipeId);
     }
     else{
-        $repository->updateReview($title,$message,$rate, $review->Id);
+        $repository->updateReview($title,$message,$rate, $review->Id, $recipeId);
     }
     header("Location:recipes_details.php?recipe="."{$recipeId}");
     
