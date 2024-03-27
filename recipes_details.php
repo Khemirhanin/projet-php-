@@ -33,7 +33,7 @@
                     <div class="row align-items-center">
                         <div class="col-xl-6 col-md-6">
                             <div class="recepies_thumb">
-                            <img src="../img/recepie/<?=$recipe->Image?>" alt="food">
+                            <img src="img/recepie/<?=$recipe->Image?>" alt="food">
                             </div>
                         </div>
                         <div class="col-xl-6 col-md-6">
@@ -83,7 +83,7 @@
                             </div>
                             </div>
                             <div class="form-group mt-3">
-                        <a href="review.php?recipe=idRecipe" class="button button-contactForm btn_4 boxed-btn">Write a Review</a>
+                        <a href="review.php?recipe=<?=$recipeId?>" class="button button-contactForm btn_4 boxed-btn">Write a Review</a>
                         </div>
                         <div class="form-group mt-3">
                         <a href="generatePdf.php?recipe=<?= $recipe->Id; ?>" class="button button-contactForm btn_4 boxed-btn" style="margin-left:30px;"><i class="fa fa-download"></i> Download PDF</a>

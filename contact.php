@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="contact.css">
+<link rel="stylesheet" href="css/contact.css">
 <?php include 'components/header.php'?>
         
     <!-- bradcam_area  -->

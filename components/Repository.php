@@ -1,7 +1,7 @@
 <?php 
 
 abstract class Repository {
-    private $db = null;
+    protected $db = null;
     public function __construct(private $tableName) {
         $this->db = ConnexionBD::getInstance();
     }
@@ -21,6 +21,4 @@ abstract class Repository {
         $ps->execute([$id]); 
         return $ps->fetch(PDO::FETCH_OBJ);
     }
-
-    
-}
+} 
