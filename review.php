@@ -1,11 +1,13 @@
 <?php 
- require_once('components/autoload.php');
- $repository = new RecipeRepository();
  require_once('components/header.php');
+ $repository = new RecipeRepository();
  if(isset($_GET['recipe'])){
-
     $recipeId = (int)$_GET['recipe'];
     $recipe=$repository->findById($recipeId);
+    if(!$recipe || !$recipe->Confirm){
+      $recipeId = '';
+      header('location:recipes.php');
+    }
  }else{
     $recipeId = '';
     header('location:recipes.php');

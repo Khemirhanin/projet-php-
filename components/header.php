@@ -1,3 +1,11 @@
+<?php
+require_once('components/autoload.php');
+$repository = new userRepository();
+if(isset($_COOKIE['user_id'])){
+    $query = $repository->findById($_COOKIE['user_id']);
+    $user = $query;
+}
+ ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -29,11 +37,7 @@
 </head>
 
 <body>
-    <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-
-    <!-- header-start -->
+    
     <header>
         <div class="header-area ">
             <div id="sticky-header" class="main-header-area ">
@@ -54,13 +58,36 @@
                                         <li><a href="about.php">about</a></li>
                                         <li><a href="Recipes.php">Recipes</a></li>
                                         <li><a href="contact.php">Contact</a></li>
+                                    <?php if(isset($_COOKIE['user_id'])){ ?>
+                                        <li><a href="logout.php">Logout</a></li>
+                                        <li><a href="#">Share recipe </a></li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="background-color: black; color: white;">
+                                                <i class="material-icons white-icon" style="font-size: 18px;">person</i> Profile
+                                            </a>
+                                            <ul class="dropdown-menu" style="background-color: black; color: white;">
+                                                <?php if(isset($query)){ ?>
+                                                    <li class="centered-dropdown-item">
+                                                        <div class="text-center">
+                                                            <button class="user_symbol"><?= substr($query->UserName, 0, 1) ?></button>
+                                                            <?php } ?>
+                                                            <p class="centered-text" style="margin-bottom: 20px; text-align: center; color: white; margin-left: 15px; margin-right: auto;"><?php echo $query->UserName; ?></p>
+                                                        </div>
+                                                    </li>
+                                                    <li><a href="updateProfile.php?user_id=<?= $_COOKIE['user_id']; ?>" >Update Profile</a></li>
+                            
+                                                <li><a href="viewMyPosts?user_id=<?= $_COOKIE['user_id']; ?>">View My Posts</a></li>
+                                            </ul>
+                                        </li>
+                                    <?php }else{ ?>
                                         <li><a href="login.php">Login</a></li>
                                         <li><a href="register.php">Register</a></li>
+                                    <?php } ?>
                                     </ul>
                                 </nav>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-lg-2 d-none d-lg-block"> <!-- Decreased the width of the column -->
+                        <div class="col-xl-2 col-lg-2 d-none d-lg-block"> 
                             <div class="searchBox">
                                 <input class="searchInput" type="text" name="" placeholder="Search">
                                 <button class="searchButton" href="#">

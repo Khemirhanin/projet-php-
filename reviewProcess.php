@@ -1,10 +1,5 @@
 <?php
     require_once('components/autoload.php');
-    
-    /*for debugging
-    session_start();
-    $_SESSION['user_id']=1;*/
-
     //if the user isn't logged in go to login page
     if(!isset($_SESSION['user_id'])) {
         header("Location: login.php");
@@ -16,6 +11,7 @@
         $recipeId = '';
         header('location:recipes.php');
     }
+    
     $repository = new ReviewRepository();
     $user = (int)$_SESSION['user_id'];
     $title = $_POST["title"];

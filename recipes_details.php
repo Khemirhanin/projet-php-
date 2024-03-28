@@ -1,9 +1,9 @@
 <?php 
-    require_once('components/autoload.php');
+    require_once('components/header.php');
+
     $repository = new RecipeRepository();
     $reviewRepository = new ReviewRepository();
-    $userRepository = new UserRepository();
-    require_once('components/header.php');
+    $userRepository = new userRepository();
     if(isset($_GET['recipe'])){
          $recipeId = (int)$_GET['recipe'];
         $recipe=$repository->findById($recipeId);
@@ -11,10 +11,9 @@
         $recipeId = '';
         header('location:recipes.php');
     }
-
-
 ?>
-<link rel="stylesheet" href="css/commentSection.css">
+
+<link rel="stylesheet" href="css\commentSection.css">
     <div class="bradcam_area bradcam_bg_1">
         <div class="container">
             <div class="row">
@@ -31,7 +30,7 @@
     <div class="recepie_details_area">
 
 
-        <?php  if(!empty($recipe)){ ?>
+        <?php  if(!empty($recipe) && $recipe->Confirm){ ?>
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-xl-6 col-md-6">
@@ -97,22 +96,23 @@
                     <div class="comment-section">
                         <h3 class="contact-title" >Reviews</h3>
                         <?php 
-                        if (count($reviewRepository->findAll())> 0){
-                        foreach ($reviewRepository->findAll() as $review){ ?>
-                        <div class="review-box">
-						<div class="review-head">
-							<h3 class="contact-title review-author">
-                                <?php $user = $userRepository->findById($review->User);
-                                    if(!$user){
-                                        echo"deleted user";
-                                    }
-                                    else{
-                                        echo $user->Username;
-                                    }};
-                                
-                                ?>
-                                </h3>
-                        <div class = "rating">
+                        if (($reviewRepository->findReviewByRecipe($recipeId))){
+                            
+                            foreach ($reviewRepository->findReviewByRecipe($recipeId) as $review){ ?>
+                                <div class="review-box">
+                                <div class="review-head">
+                                    <h3 class="contact-title review-author">
+                                        <?php $user = $userRepository->findById($review->User);
+                                            if(!$user){
+                                                echo"deleted user";
+                                            }
+                                            else{
+                                                echo $user->UserName;
+                                            };
+                                        
+                                        ?>
+                                    </h3>
+                                <div class = "rating">
                         <?php
                         for ($i = 1; $i <= 5; $i++) {
                             if ($i <= $review->Rate) {
@@ -129,10 +129,13 @@
 							<?=$review->Description?>
 						</div>
                     </div>
+                    <br>
                 </div>
 
 
 
+        <?php }}else{ ?>
+                <h2>No review found</h2> 
         <?php }}else{ ?>
             <h2>No recipe found</h2>
         <?php } ?>
