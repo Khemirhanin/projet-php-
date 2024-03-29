@@ -24,7 +24,7 @@ function contactUsmail($name,$email,$subject, $description)
     $mail->Subject= $subject.", Received from: <".$email.">\r\n";
     $email_template = "
     <h2> This email is sent from ".$name."</h2>\r\n
-    <p>Subject: ".$subject."</p>\r\n
+    <p>Email: ".$email."</p>\r\n
     <p>Subject: ".$subject."</p>\r\n
     <p>Message: ".$description."</p>\r\n
     ";
@@ -61,18 +61,7 @@ if(isset($_POST["send"])){
       ){
         //php mailer function
         $result=contactUsmail("$name","$email","$subject","$description");
-
-        //checking the result
-        if($result){
-          header("Location:contact.php?success");
-          echo "Success";
-        }else{
-          echo "fail";
-          header("Location:contact.php?error");
-          
-          
-        }
-        
+        header("Location:contact.php?success"); 
       }
       else{
         echo "missing";

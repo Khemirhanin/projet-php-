@@ -27,11 +27,10 @@
           <h2 class="contact-title">Get in Touch</h2>
           <?php
           if(isset($_GET["success"])){
-            echo "<h3>Success</h3>";
+            echo "<h4>Email Sent Successfully.<br> We will Contact you as soos as possible.</h4>";
+            
           }
-          if(isset($_GET["error"])){
-            echo "<h4 >failed</h4>";
-          }
+          
           if(isset($_GET["missing"])){
             echo "<h4 >Please fill all the fields </h4>";
           }
