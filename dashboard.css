@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Xanh+Mono:ital@0;1&display=swap');
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    flex-wrap: wrap;
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(255, 224, 72), white);
+    background-image: url("img/dashBack.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-weight: Pacifico, sans-serif;
+    }
+.contain{
+    margin-top: 30px;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    }
+.statistics{
+    
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin: 10px;
+    height: 100vh;
+    width: 100%;
+    font-weight: Pacifico, sans-serif;
+}
+
+.defaultStyle{
+    
+    padding: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction: column;
+    margin: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.5);
+    font-weight: Pacifico, sans-serif;
+}
+h2{
+    text-decoration: underline;
+    color: rgb(0, 0, 0);
+    font-weight: Pacifico, sans-serif;
+}
+h4{
+    font-weight: Pacifico, sans-serif;
+}
+
+footer{
+    width: 100%;
+}
