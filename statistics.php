@@ -10,8 +10,7 @@ $connectedUsers = mysqli_query($con," SELECT * from users where Status = 1");
 <!-- the header -->
 <?php include_once "components/adminHeader.php"; ?>
     <!-- slider_area_start -->
-
-  <div class="contain">
+    <h1>Statistics </h1>
     
     <div class="statistics">
     <div class="defaultStyle connectedUsers ">
@@ -38,13 +37,7 @@ $connectedUsers = mysqli_query($con," SELECT * from users where Status = 1");
           
 
         </div>
-        <div class="defaultStyle totalRecipes">
-          <h2>Downloads</h2>
-          <br>
-          <h4>10</h4>
-          
-
-        </div>
+        
         <div class="defaultStyle totalRecipes">
           <h2>Requests</h2>
           <br>
@@ -81,7 +74,7 @@ $connectedUsers = mysqli_query($con," SELECT * from users where Status = 1");
         ?>
       </div>
     </div>
-  </div>
+ 
      
 
 
@@ -95,5 +88,5 @@ $connectedUsers = mysqli_query($con," SELECT * from users where Status = 1");
 
 <!-- footer  -->
 <?php
-include_once "components/footer.php";
+include_once "components/adminFooter.php";
 ?>
