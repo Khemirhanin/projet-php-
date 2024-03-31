@@ -32,6 +32,8 @@
 
 <body>
     
+ 
+    
     <header>
         <div class="header-area ">
             <div id="sticky-header" class="main-header-area ">
@@ -40,7 +42,7 @@
                         <div class="col-xl-3 col-lg-2">
                             <div class="logo">
                                 <a href="index.php">
-                                    <!-- <img src="img/logo.png" alt=""> -->
+                                    <img src="img/logo.png" alt=""> 
                                 </a>
                             </div>
                         </div>
