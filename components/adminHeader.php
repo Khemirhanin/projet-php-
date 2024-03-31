@@ -55,7 +55,6 @@
                                         <li><a href="crud.php">CRUD</a></li>
                                     <?php if(isset($_COOKIE['user_id'])){ ?>
                                         <li><a href="logout.php">Logout</a></li>
-                                        <li><a href="#">Share recipe </a></li>
                                         <li><a href="adminProfile.php">Profile</a></li>
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="background-color: black; color: white;">
