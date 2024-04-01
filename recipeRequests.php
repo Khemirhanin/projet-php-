@@ -1,14 +1,8 @@
 <?php 
-    require_once('components/header.php');
+    require_once('components/autoload.php');
+    require_once('components/adminHeader.php');
     $repository = new RecipeRepository();
-    
 
-    //access to admin only
-    $adminID = 1; 
-    if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] != $adminID) {
-        header("Location: index.php");
-        exit;
-    } 
 ?>
 <link rel="stylesheet" href="css\request.css">
 <div class="bradcam_area bradcam_bg_1" style="background-image: url(img/banner/bradcam.png);">

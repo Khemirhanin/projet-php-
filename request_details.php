@@ -1,13 +1,9 @@
 <?php 
-    require_once('components/header.php');
+    require_once('components/autoload.php');
+    require_once('components/adminHeader.php');
 
     $repository = new RecipeRepository();
-    //access to admin only
-    $adminID = 1; 
-    if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] != $adminID) {
-        header("Location: index.php");
-        exit;
-    } 
+
     if(isset($_GET['recipe'])){
          $recipeId = (int)$_GET['recipe'];
         $recipe=$repository->findById($recipeId);
