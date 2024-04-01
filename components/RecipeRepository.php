@@ -4,11 +4,6 @@
         public function __construct() {
             parent::__construct("recipes");
         }
-        public function updateAverageRating($rating,$recipeID) {
-            $query = "update recipes set AverageRating = ? where Id = ?";
-            $ps = $this->db->prepare($query);
-            $ps->execute([$rating,$recipeID]); 
-        }
         public function findApprovedRecipes(){
             $query = "select * from recipes where confirm is true";
             $response = $this->db->query($query);
