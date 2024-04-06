@@ -1,37 +1,78 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-    $to = "spn8@spondonit.com";
-    $from = $_REQUEST['email'];
-    $name = $_REQUEST['name'];
-    $subject = $_REQUEST['subject'];
-    $number = $_REQUEST['number'];
-    $cmessage = $_REQUEST['message'];
+//Load Composer's autoloader
+require 'C:\Users\Samar\phpmailer\vendor\autoload.php';
 
-    $headers = "From: $from";
-	$headers = "From: " . $from . "\r\n";
-	$headers .= "Reply-To: ". $from . "\r\n";
-	$headers .= "MIME-Version: 1.0\r\n";
-	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-    $subject = "You have a message from your Bitmap Photography.";
+function contactUsmail($name,$email,$subject, $description)
+{
+    $mail = new PHPMailer(true);
+    $mail->SMTPDebug = 2;
+    $mail->isSMTP();
+    $mail->Host= 'smtp.gmail.com';
+    $mail->SMTPAuth= true;
+    $mail->Username= 'benameureya953@gmail.com';
+    $mail->Password='hiwc mjmq wjos asja';
+    $mail->SMTPSecure='tls';
+    $mail->Port= 587;  
+    $mail->setFrom($email,$name);
+    $mail->addAddress("benameureya953@gmail.com");
+    $mail->isHTML(true);
+    $mail->Subject= $subject.", Received from: <".$email.">\r\n";
+    $email_template = "
+    <h2> This email is sent from ".$name."</h2>\r\n
+    <p>Email: ".$email."</p>\r\n
+    <p>Subject: ".$subject."</p>\r\n
+    <p>Message: ".$description."</p>\r\n
+    ";
 
-    $logo = 'img/logo.png';
-    $link = '#';
+    $mail->Body= $email_template;
+    $mail->send();
+    //echo"Message has been sent";
 
-	$body = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>Express Mail</title></head><body>";
-	$body .= "<table style='width: 100%;'>";
-	$body .= "<thead style='text-align: center;'><tr><td style='border:none;' colspan='2'>";
-	$body .= "<a href='{$link}'><img src='{$logo}' alt=''></a><br><br>";
-	$body .= "</td></tr></thead><tbody><tr>";
-	$body .= "<td style='border:none;'><strong>Name:</strong> {$name}</td>";
-	$body .= "<td style='border:none;'><strong>Email:</strong> {$from}</td>";
-	$body .= "</tr>";
-	$body .= "<tr><td style='border:none;'><strong>Subject:</strong> {$csubject}</td></tr>";
-	$body .= "<tr><td></td></tr>";
-	$body .= "<tr><td colspan='2' style='border:none;'>{$cmessage}</td></tr>";
-	$body .= "</tbody></table>";
-	$body .= "</body></html>";
+}
 
-    $send = mail($to, $subject, $body, $headers);
 
-?>
+
+
+
+if(isset($_POST["send"])){
+    //getting user information
+    $name= $_POST["name"];
+    $email= $_POST["email"];
+    $subject= $_POST["subject"];
+    $description= $_POST["description"];
+
+    //recipient email address (admin)
+    $to= "benameureya953@gmail.com";
+        
+    //headers for sending email
+    $headers = "From: ".$name. " < ".$email." > \r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+    
+    if(trim($name)!="" &&
+    trim($email)!="" &&
+    trim($subject)!="" &&
+    trim($description)!=""
+      ){
+        //php mailer function
+        $result=contactUsmail("$name","$email","$subject","$description");
+        header("Location:contact.php?success"); 
+      }
+      else{
+        echo "missing";
+        header("Location:contact.php?missing");
+        
+      }
+
+  
+      
+      
+      
+  }
+
+  ?>
