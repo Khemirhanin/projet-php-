@@ -62,7 +62,7 @@
                         <h3>Egg Manchurian</h3>
                         <span>Appetizer</span>
                         <p>Time Needs: 30 Mins</p>
-                        <a href="#" class="line_btn">View Full Recipe</a>
+                        
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-6">
@@ -73,7 +73,7 @@
                         <h3>Pure Vegetable Bowl</h3>
                         <span>Appetizer</span>
                         <p>Time Needs: 30 Mins</p>
-                        <a href="#" class="line_btn">View Full Recipe</a>
+                        
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-6">
@@ -84,7 +84,7 @@
                         <h3>Egg Masala Ramen</h3>
                         <span>Appetizer</span>
                         <p>Time Needs: 30 Mins</p>
-                        <a href="#" class="line_btn">View Full Recipe</a>
+                        
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                     <div class="trand_info text-center">
                        
                         <h3>Discover latest trending recipes</h3>
-                        <a href="#" class="boxed-btn3">View all Recipes</a>
+                        <a href="Recipes.php" class="boxed-btn3">View all Recipes</a>
                     </div>
                 </div>
             </div>

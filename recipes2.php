@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="css/recipes.css">
 
     <!-- bradcam_area  -->
-    <div class="bradcam_area bradcam_bg_1" style="background-image: url(../img/pasta-1181189_1920.jpg); opacity:0.9 ;" id="searchtitle12">
+    <div class="bradcam_area bradcam_bg_1" style="background-image: url(../img/pasta-1181189_1920.jpg); opacity:0.9;">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -27,12 +27,9 @@
     
 <div class="recipe_area inc_padding">
         <div class="container">
-        <div class="row"  id="Recipiezone12">
+            <div class="row">
             <?php if (count($repository->findAll())> 0){
-                //if there are recipes in the database then we can display them
-            foreach ($repository->findAll() as $recipe){ 
-                //if the recipe is confirmed by the admin then it will be displayed 
-                if($recipe->Confirm==1){?>
+            foreach ($repository->findAll() as $recipe){ ?>
                 <div class="card">
                     <div class="header">
                         <img src="../img/recepie/<?=$recipe->Image?>" alt="food">
@@ -72,7 +69,7 @@
                     
                     <a href="generatePdf.php?recipe=<?= $recipe->Id; ?>" class="btn download"><i class="fa fa-download"></i> Download PDF</a>
                 </div>
-            <?php }}}else 
+            <?php }}else 
                 echo"<h2>No recipes found</h2>";                ?>
         </div>
     </div>
@@ -87,7 +84,7 @@
                     <div class="trand_info text-center">
                        
                         <h3>Share Your Recipe With Us!!</h3>
-                        <a href="Submit_Request.php" class="boxed-btn3">Share Recipes</a>
+                        <a href="#" class="boxed-btn3">Share Recipes</a>
                     </div>
                 </div>
             </div>

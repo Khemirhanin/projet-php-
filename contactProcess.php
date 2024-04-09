@@ -4,7 +4,7 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 //Load Composer's autoloader
-require 'vendor\autoload.php';
+require_once "vendor/autoload.php";
 
 
 function contactUsmail($name,$email,$subject, $description)
