@@ -46,28 +46,25 @@ $conn = ConnexionBD::getInstance();
         $Difficulty= $_POST['inlineRadioOptions'];
         $ingredients= $_POST['ingredients'];
         $description= $_POST['description'];
-
-        // Check if a file was uploaded
         if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-            // Define the upload directory
+        
             $uploadDir = 'img/recepie/';
 
-            // Generate a unique name for the file
+          
             $imageName = uniqid() . "-" . basename($_FILES['image']['name']);
 
-            // Define the path to the image
             $imagePath = $uploadDir . $imageName;
 
-            // Move the uploaded file to the upload directory
+          
             if (move_uploaded_file($_FILES['image']['tmp_name'], $imagePath)) {
-                // The file was moved successfully, now store the path in the database
+               
                 $image = $imagePath;
             } else {
-                // The file could not be moved
+               
                 die("Failed to upload image");
             }
         } else {
-            // No file was uploaded or there was an error, use the existing image
+            
             $image = $row['image'];
         }
 
