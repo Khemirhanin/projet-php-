@@ -86,7 +86,7 @@
                 <div class="alert alert-info" role="alert">
                 No recipes found
                 </div>
-                <div><Button class="share" ><a href="Submit_Request">Share Recipes </Button></a></div>
+                <div><Button class="share" ><a href="Submit_Request.php">Share Recipes </Button></a></div>
             </div>
             <?php } ?>
 
