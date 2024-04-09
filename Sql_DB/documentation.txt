@@ -1,0 +1,16 @@
+there are 3 tables called  recipes reviews and users 
+*in the recipes table :
+    Id : the recipe's id 
+    Name:name of the recipe
+    Type
+    Time: needed to make the recipe
+    NbServings: number of servings 
+    ...
+    Confirm : it's a boolean value that tells whether or not the recipe has been confirmed by the admin  as all new recipes whether added by the admin or the users will be added to the table recipes and the the admin can tell which one's to confirm 
+    AverageRating  
+*the reviews table:
+    Id: the review id 
+    User: the user's id 
+*the users table:
+    Gender:  1 if it's a girl 0 if it's a boy 
+    status :   0 if the user is not logged in else 1
