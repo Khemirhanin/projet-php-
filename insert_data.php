@@ -1,32 +1,57 @@
-<?php session_start();
+<?php 
+session_start();
 
-// Establish the database connection
-$conn = mysqli_connect("localhost", "root", "", "foodhub");
+require_once "components/autoload.php";
+$conn = ConnexionBD::getInstance();
 
-// Check the connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+if (isset($_POST['add_recipes']) && isset($_FILES['image'])){
+    $name = $_POST['recipe'];
+    $dish_type = $_POST['dish_type'];
+    $nb_serv = $_POST['nb_serv'];
+    $cookingtime = $_POST['cookingTime'];
+    $difficulty = $_POST['inlineRadioOptions'];
+    $ingredients = $_POST['ingredients'];
+    $description = $_POST['description'];
 
-if (isset($_POST['add_recipes'])){
-    $name=$_POST['recipe'];
-    $dish_type=$_POST['dish_type'];
-    $nb_serv=$_POST['nb_serv'];
-    $cookingtime=$_POST['cookingTime'];
-    $difficulty=$_POST['inlineRadioOptions'];
-    $image=$_POST['image'];
-    $ingredients=$_POST['ingredients'];
-    $description=$_POST['description'];
+    $image = $_FILES['image'];
 
-    $sql = "INSERT INTO `recipes` (Name, Type, NbServings, Time, Difficulty, image, Ingredients, Description, Confirm) 
-    VALUES (\"$name\", \"$dish_type\", \"$nb_serv\", \"$cookingtime\", \"$difficulty\", \"$image\", \"$ingredients\", \"$description\", 1)";
-$result=mysqli_query($conn,$sql);
-    
-    if($result){
-        $_SESSION['message'] = 'Recipe added successfully';
-        header('location:crud.php');
+    // Check if the upload was successful
+    if ($image['error'] == 0) {
+        // Define the upload directory
+        $uploadDir = 'img/recepie/';
+
+        // Define the path to the image
+        $imagePath = $uploadDir . basename($image['name']);
+
+        // Move the uploaded file to the upload directory
+        if (move_uploaded_file($image['tmp_name'], $imagePath)) {
+            // The file was moved successfully, now store the path in the database
+            $sql = "INSERT INTO `recipes` (Name, Type, NbServings, Time, Difficulty, image, Ingredients, Description) VALUES (:name, :dish_type, :nb_serv, :cookingtime, :difficulty, :image, :ingredients, :description)";
+            $stmt = $conn->prepare($sql);
+            $result = $stmt->execute([
+                ':name' => $name,
+                ':dish_type' => $dish_type,
+                ':nb_serv' => $nb_serv,
+                ':cookingtime' => $cookingtime,
+                ':difficulty' => $difficulty,
+                ':image' => $imagePath,
+                ':ingredients' => $ingredients,
+                ':description' => $description
+            ]);
+
+            if($result){
+                $_SESSION['message'] = 'Recipe added successfully';
+                header('location:crud.php');
+            } else {
+                die("Query failed");
+            }
+        } else {
+            // The file could not be moved
+            die("Failed to upload image");
+        }
     } else {
-       die("Query failed".mysqli_error($conn));
+        // The upload was not successful
+        die("Failed to upload image");
     }
 }
 ?>

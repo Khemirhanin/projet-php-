@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 
 <?php include 'components/adminHeader.php'; ?>
-<link rel="stylesheet" href="css/crud.css">
+
 <main>
 <div class="container">
     <br>
@@ -14,7 +14,25 @@
      <br><br> 
     </div>
    
-            
+            <style> 
+                        .box h2{
+                            float:left;
+                        }
+                        .box button{
+                            float:right;
+                        }
+                        h6{
+                            text_align:center;
+                            color:green ;
+                        }
+                        .actions{
+                            display:flex;
+                            flex-direction:column;
+                            justify-content:space-between;
+                            gap:10px;
+                        }
+
+            </style>
             
    
    <table  class="table table-hover table-bordered table-striped">
@@ -36,41 +54,42 @@
             </tr>
         </thead>
         <tbody>
-            <?php
-            $conn=mysqli_connect("localhost","root","","foodhub");
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-            else {
-            $sql = "SELECT * FROM recipes";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-            ?>
-                    <tr>
-                        <td><?php echo $row['Id']; ?></td>
-                        <td><?php echo $row['Name']; ?></td>
-                        <td><?php echo $row['Type']; ?></td>
-                        <td><?php echo $row['Time']; ?></td>
-                        <td><?php echo $row['NbServings']; ?></td>
-                        <td><?php echo $row['Difficulty']; ?></td>
-                        <td><?php echo $row['Ingredients']; ?></td>
-                        <td><?php echo $row['Description']; ?></td>
-                        <td><?php echo $row['Image']; ?></td>
-                        <td><?php echo $row['AverageRating']; ?></td>
-                        <td><?php echo $row['IdUser']; ?></td>
-                        <td>
-                         <div class="actions">
-                            <a href="update.php? id=<?php echo $row['Id']; ?>" class="btn btn-success">Update</a>
-                            <a href="delete.php? id=<?php echo $row['Id']; ?>" class="btn btn-danger">Delete</a>
-                        </div>
+        <?php
+        require_once "components/autoload.php";
+        $conn = ConnexionBD::getInstance();
 
-                        </td>
-                    </tr>
-            <?php
-                }
-            }}
-            ?>
+        $sql = "SELECT * FROM recipes";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        ?>
+                <tr>
+                    <td><?php echo $row['id']; ?></td>
+                    <td><?php echo $row['Name']; ?></td>
+                    <td><?php echo $row['Type']; ?></td>
+                    <td><?php echo $row['Time']; ?></td>
+                    <td><?php echo $row['NbServings']; ?></td>
+                    <td><?php echo $row['Difficulty']; ?></td>
+                    <td><?php echo $row['Ingredients']; ?></td>
+                    <td><?php echo $row['Description']; ?></td>
+                    <td>
+                    <img src="<?php echo $row['image']; ?>" alt="Recipe Image" style="width:100px;height:100px;">                        </td>
+                    <td><?php echo $row['averageRating']; ?></td>
+                    <td><?php echo $row['id_user']; ?></td>
+                    <td>
+                    <div class="actions">
+                        <a href="update.php? id=<?php echo $row['id']; ?>" class="btn btn-success">Update</a>
+                        <a href="delete.php? id=<?php echo $row['id']; ?>" class="btn btn-danger">Delete</a>
+                    </div>
+                   </td>
+        </tr>
+<?php
+    }
+}
+?>
         </tbody>
     </table>
     
@@ -102,7 +121,7 @@
 
 
     <!-- Modal -->
-    <form action="insert_data.php" method="post" >
+    <form action="insert_data.php" method="post" enctype="multipart/form-data" >
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
