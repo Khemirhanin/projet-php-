@@ -1,3 +1,4 @@
+
 <!-- footer  -->
 <footer class="footer">
             <div class="copy-right_text">
@@ -6,9 +7,9 @@
                     <div class="row align-items-center">
                         <div class="col-xl-8 col-md-8">
                             <p class="copy_right">
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                               
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="fa fa-heart-o" aria-hidden="true"></i> <span style="color:rgb(255,199,29);">by INSAT Students</span>
+                            
                             </p>
                         </div>
                         <div class="col-xl-4 col-md-4">
@@ -68,8 +69,9 @@
     <script src="js/jquery.form.js"></script>
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/mail-script.js"></script>
-
+    <!--<script src="js/add_result.js"></script>-->
     <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
 </body>
 
 </html>

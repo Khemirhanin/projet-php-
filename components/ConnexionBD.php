@@ -4,7 +4,7 @@ class ConnexionBD
   private static $_dbname = "FoodHub";
   private static $_user = "root";
   private static $_pwd = "";
-  private static $_host = "localhost:4306";
+  private static $_host = "localhost";
   private static $_bdd = null;
   private function __construct()
   {
