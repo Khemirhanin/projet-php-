@@ -2,7 +2,10 @@
 //auto_loader
 require_once "components/autoload.php";
 
-
+function isPositiveInteger($value) {
+  // Check if the value is numeric and the integer value matches the original value
+  return is_numeric($value) && (int)$value == $value && $value > 0;
+}
 //form data recuperation
 if (isset($_POST["subbtn"]) ) {
 
@@ -20,7 +23,7 @@ if (isset($_POST["subbtn"]) ) {
         $description = $_POST['description'];
 
         $image_name = $image->uploadImage('img/recepie/');
-       if($image_name){
+       if($image_name && isPositiveInteger($servings) && isPositiveInteger($cooking_time)){
             $bdd = ConnexionBD::getInstance();
             $requete = "INSERT INTO recipes (Name, Type, Time, NbServings, Difficulty, Ingredients, Description, Image, Confirm,IdUser,AverageRating) 
                                 VALUES (:name, :type, :time, :NbServings, :Difficulty, :Ingredients, :Description,:Image, :Confirm ,:IdUser,:AverageRating);";

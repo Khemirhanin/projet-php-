@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $bdd = ConnexionBD::getInstance();
     $search = '%' . $search . '%';
     // Prepare the SQL statement
-    $req = "SELECT Name FROM recipes WHERE Name LIKE :search ORDER BY AverageRating DESC LIMIT 5";
+    $req = "SELECT Name FROM confirmed_recipes where Name LIKE :search ORDER BY AverageRating DESC LIMIT 5";
     $rep = $bdd->prepare($req);
     // Bind the parameter and execute the query
     $rep->execute(array(':search' => $search));
