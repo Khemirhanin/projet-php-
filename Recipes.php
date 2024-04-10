@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="css/recipes.css">
 
     <!-- bradcam_area  -->
-    <div class="bradcam_area bradcam_bg_1" style="background-image: url(../img/pasta-1181189_1920.jpg); opacity:0.9 ;" id="searchtitle12">
+    <div class="bradcam_area bradcam_bg_1" style="background-image: url(img/pasta-1181189_1920.jpg); opacity:0.9 ;" id="searchtitle12">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -35,7 +35,7 @@
                 if($recipe->Confirm==1){?>
                 <div class="card">
                     <div class="header">
-                        <img src="../img/recepie/<?=$recipe->Image?>" alt="food">
+                        <img src="img/recepie/<?=$recipe->Image?>" alt="food">
                             <div class="icon">
                                 <a href="#"><i class="fa fa-heart-o"></i></a>
                         </div>
@@ -80,7 +80,7 @@
 
 
 
-    <div class="latest_trand_area" style="background-image: url(../img/pasta-2978381_1920.jpg); opacity:0.9;">
+    <div class="latest_trand_area" style="background-image: url(img/pasta-2978381_1920.jpg); opacity:0.9;">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">

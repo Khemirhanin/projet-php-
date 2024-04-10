@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="css/viewMyPosts.css">
 
    <!-- bradcam_area  -->
-   <div class="bradcam_area bradcam_bg_1" style="background-image: url(../img/copy-space-ingredients-italian-food.jpg); opacity:0.9;">
+   <div class="bradcam_area bradcam_bg_1" style="background-image: url(img/copy-space-ingredients-italian-food.jpg); opacity:0.9;">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -37,7 +37,7 @@
             ?>
                 <div class="card">
                     <div class="header">
-                        <img src="../img/recepie/<?=$recipe->Image?>" alt="food">
+                        <img src="img/recepie/<?=$recipe->Image?>" alt="food">
                             <div class="icon">
                                 <a href="#"><i class="fa fa-heart-o"></i></a>
                         </div>
