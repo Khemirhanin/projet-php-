@@ -976,14 +976,16 @@ header .container{
 @media (min-width: 992px) and (max-width: 1200px) {
   /* line 16, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_header.scss */
   .header-area .main-header-area {
-    padding: 25px 0px;
+    padding: 10px 30px;
+    background: #000;
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1500px) {
+@media (min-width: 1200px)  {
   /* line 16, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_header.scss */
   .header-area .main-header-area {
-    padding: 0px 0px;
+    padding: 10px 45px;
+    background: #000;
   }
 }
 
@@ -1088,7 +1090,7 @@ header .container{
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1500px) {
+@media (min-width: 1200px)  {
   /* line 101, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_header.scss */
   .header-area .main-header-area .Appointment .book_btn {
     margin-left: 0;
@@ -1160,7 +1162,7 @@ header .container{
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1500px) {
+@media (min-width: 1200px)  {
   /* line 147, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_header.scss */
   .header-area .main-header-area .main-menu ul li a {
     font-size: 15px;
@@ -1311,7 +1313,7 @@ header .container{
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1500px) {
+@media (min-width: 1200px)  {
   /* line 253, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_header.scss */
   .header-area .main-header-area.sticky {
     padding: 10px 0px;
@@ -1649,7 +1651,7 @@ header .container{
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1500px) {
+@media (min-width: 1200px)  {
   /* line 125, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_slider.scss */
   .shap_img_1 {
     width: 40%;
@@ -1676,7 +1678,7 @@ header .container{
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1500px) {
+@media (min-width: 1200px)  {
   /* line 139, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_slider.scss */
   .shap_big_2 {
     width: 40%;
@@ -1886,7 +1888,7 @@ header .container{
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1500px) {
+@media (min-width: 1200px)  {
   /* line 45, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_about.scss */
   .about_me .about_img .color_pattern {
     right: 0;
@@ -4199,7 +4201,7 @@ url(../img/pexels-ella-olsson-1640774.jpg);
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1500px) {
+@media (min-width: 1200px)  {
   /* line 53, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_recepie.scss */
   .recepie_area .single_recepie .recepie_thumb {
     width: 200px;
