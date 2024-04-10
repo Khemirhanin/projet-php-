@@ -14,5 +14,3 @@ there are 3 tables called  recipes reviews and users
 *the users table:
     Gender:  1 if it's a girl 0 if it's a boy 
     status :   0 if the user is not logged in else 1
-
-there is a view containing the confirmed recipes
