@@ -137,6 +137,23 @@ ALTER TABLE `recipes`
 ALTER TABLE `reviews`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
+CREATE VIEW `confirmed_recipes` AS
+SELECT
+  `Id`,
+  `Name`,
+  `Type`,
+  `Time`,
+  `NbServings`,
+  `Difficulty`,
+  `Ingredients`,
+  `Description`,
+  `Image`,
+  `IdUser`,
+  `AverageRating`
+FROM
+  `recipes`
+WHERE
+  `Confirm` = 1;
 --
 -- AUTO_INCREMENT for table `users`
 --
