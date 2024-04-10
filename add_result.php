@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $search = '%'.$search.'%'; // Assuming $search is already defined
 
     // Prepare the SQL statement
-    $req = "SELECT * FROM confirmed_recipes where confirm = true and name LIKE :search";
+    $req = "SELECT * FROM recipes where confirm = true and name LIKE :search";
     $rep = $bdd->prepare($req);
 
 // Execute the query with an array of parameters
