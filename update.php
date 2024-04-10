@@ -1,28 +1,23 @@
-<?php include 'components/adminHeader.php';
-session_start(); ?>
+<?php 
+include 'components/adminHeader.php';
+session_start();
 
-<?php
-$conn= mysqli_connect("localhost", "root", "", "foodhub");
-if(!$conn) {
-    die("Connection failed: ".mysqli_connect_error());
-}
-else
-{
+require_once "components/autoload.php";
+$conn = ConnexionBD::getInstance();
+
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
-   
 
-        $query = "SELECT * FROM recipes WHERE id = $id";
-
-        $result = mysqli_query($conn, $query);
-        if(!$result) {
-            die("Query failed".mysqli_error());
-        }
-    else {
-            $row = mysqli_fetch_assoc($result);
-      } 
-    } 
-}
+        $query = "SELECT * FROM recipes WHERE id = :id";
+        $stmt = $conn->prepare($query);
+        $stmt->execute([':id' => $id]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    } else {
+        $query = "SELECT * FROM recipes WHERE id = :id";
+        $stmt = $conn->prepare($query);
+        $stmt->execute([':id' => $id]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
 ?>
 
@@ -39,40 +34,64 @@ else
 </style>
 
 <?php 
-       if(isset($_POST['update_recipes'])) {
-           
-           if (isset($_GET['id_new'])) {
-               $idnew = $_GET['id_new'];
-           }
-
-            $recipe= $_POST['recipe'];
-            $dish_type= $_POST['dish_type'];
-            $nb_serv= $_POST['nb_serv'];
-            $cookingTime= $_POST['cookingTime'];
-            $Difficulty= $_POST['inlineRadioOptions'];
-            $image= $_POST['image'];
-            $ingredients= $_POST['ingredients'];
-            $description= $_POST['description'];
-           
-            
-            $query = "update `recipes` set Name = '$recipe', Type = '$dish_type', NbServings = '$nb_serv', Time = '$cookingTime', Difficulty = '$Difficulty', Image = '$image', Ingredients = '$ingredients',
-            Description = '$description' WHERE Id = '$idnew' ";
+    if(isset($_POST['update_recipes'])) {
+        if (isset($_GET['id_new'])) {
+            $idnew = $_GET['id_new'];
+        }
+    
+        $recipe= $_POST['recipe'];
+        $dish_type= $_POST['dish_type'];
+        $nb_serv= $_POST['nb_serv'];
+        $cookingTime= $_POST['cookingTime'];
+        $Difficulty= $_POST['inlineRadioOptions'];
+        $ingredients= $_POST['ingredients'];
+        $description= $_POST['description'];
+        if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         
-            $result = mysqli_query($conn, $query);
-            
-            if(!$result){
-                die("Query failed".mysqli_error());
-            }
-            else{
-                $_SESSION['update_msg'] = "you have successfully updated the recipe";
-              
-                header("Location: crud.php");
-            }
-            }
+            $uploadDir = 'img/recepie/';
+
           
+            $imageName = uniqid() . "-" . basename($_FILES['image']['name']);
+
+            $imagePath = $uploadDir . $imageName;
+
+          
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $imagePath)) {
+               
+                $image = $imagePath;
+            } else {
+               
+                die("Failed to upload image");
+            }
+        } else {
+            
+            $image = $row['image'];
+        }
+
+        $query = "UPDATE `recipes` SET Name = :recipe, Type = :dish_type, NbServings = :nb_serv, Time = :cookingTime, Difficulty = :Difficulty, image = :image, Ingredients = :ingredients, Description = :description WHERE id = :idnew";
+        $stmt = $conn->prepare($query);
+        $result = $stmt->execute([
+            ':recipe' => $recipe,
+            ':dish_type' => $dish_type,
+            ':nb_serv' => $nb_serv,
+            ':cookingTime' => $cookingTime,
+            ':Difficulty' => $Difficulty,
+            ':image' => $image,
+            ':ingredients' => $ingredients,
+            ':description' => $description,
+            ':idnew' => $idnew
+        ]);
+    
+        if($result){
+            $_SESSION['update_msg'] = "you have successfully updated the recipe";
+            header("Location: crud.php");
+        } else {
+            die("Query failed");
+        }
+    }
 ?>
 
-<form class=cnt action="update.php?id_new=<?php echo $id; ?>" method="post">
+<form class=cnt action="update.php?id_new=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
      <!-- Form -->
      <div class="container12" id ="main">
                 <!--recipe name-->
@@ -134,7 +153,7 @@ else
                     </div>
                     <!--image-->
                     <div class="input-group mb-3">
-                    <input type="file" class="form-control" id="inputGroupFile02" name="image"  value="<?php echo $row['Image']?>">
+                    <input type="file" class="form-control" id="inputGroupFile02" name="image" required value="<?php echo $row['image']?>">
                     <label class="input-group-text" for="inputGroupFile02">Upload</label>
                     </div>
                     <p class=urg >Please note: You need to reselect the image when updating the recipe.</p>
