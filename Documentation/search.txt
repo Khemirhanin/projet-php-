@@ -1,0 +1,17 @@
+whene using the searh box a recommandation list will appear:
+it will recommand the top 5 rated recipes that corresponds to the wanted recipe(search.php)
+
+when you press the search button from anywhere you will be redirected to the Recipes.php wich will contain the search result(add_result.php to add the recipes to the page)
+
+
+both list recommandation and search are using ajax for dynamique searching and data is sendet using json file
+(search.js) 
+you can find a function ajaxRequest :it prepares the ajaxrequest taking as parameter the method and the php file that treats the information and the function
+that it will be executed when the operation is succeded
+
+for recommandation
+ajaxRequest('POST', 'search.php', suggest);
+
+for displaying the results
+ajaxRequest('POST', 'add_result.php', addElement);
+

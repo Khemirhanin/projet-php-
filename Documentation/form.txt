@@ -1,0 +1,10 @@
+after the form is submitted it's data will be verified using the Image class(the constructor takes the name of the file input balise)
+then the image size and it's extention are verified using: $verifImage = $image->verifImage(10000000,'jpg','png','jpeg'); (size in octet)
+after that the generation of a unique name to the image and adding it to the recepie folder  $image_name = $image->uploadImage('img/recepie/'); it takes the relative path of the image folder
+then if the image is added successfully it will add the recepie it to the database
+
+the cooking time and the nbservings are tested to be a positive integer using the function isPositiveInteger()
+the existence of the other input fields is verified using 'required'
+
+the form html is included in Submit_Request.php(it will procced the data using the code in form.php it will be include in the Submit_Request)
+the Image class is in components(folder) 
