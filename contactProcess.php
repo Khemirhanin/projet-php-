@@ -15,7 +15,7 @@ function contactUsmail($name,$email,$subject, $description)
     $mail->Host= 'smtp.gmail.com';
     $mail->SMTPAuth= true;
     $mail->Username= 'benameureya953@gmail.com';
-    $mail->Password='hiwc mjmq wjos asja';
+    $mail->Password='your 2nd party password';
     $mail->SMTPSecure='tls';
     $mail->Port= 587;  
     $mail->setFrom($email,$name);
